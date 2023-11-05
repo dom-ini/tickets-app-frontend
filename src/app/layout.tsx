@@ -1,13 +1,15 @@
 import Providers from "./providers";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Mulish } from "next/font/google";
+import { Lexend_Deca } from "next/font/google";
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
+import { NavigationMobile } from "@/components/navigation-mobile";
 
-const baseFont = Mulish({ subsets: ["latin"], variable: "--font-sans" });
+const baseFont = Lexend_Deca({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "Tickets App",
@@ -27,9 +29,8 @@ export default function RootLayout({
         )}
       >
         <Providers>
-          <Header />
-          <main className="container">{children}</main>
-          <Footer />
+          {children}
+          <NavigationMobile />
         </Providers>
       </body>
     </html>
