@@ -1,5 +1,10 @@
 "use client";
 
+import { format } from "date-fns";
+import { pl } from "date-fns/locale";
+import { Ban, QrCode } from "lucide-react";
+import Link from "next/link";
+
 import { TicketQr } from "@/components/ticket-qr";
 import { Button } from "@/components/ui/button";
 import {
@@ -24,10 +29,6 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { format } from "date-fns";
-import { pl } from "date-fns/locale";
-import { Ban, QrCode } from "lucide-react";
-import Link from "next/link";
 
 type Ticket = {
   eventName: string;
@@ -71,7 +72,7 @@ const columns: Array<ColumnDef<Ticket>> = [
       const token = row.original.token;
       const downloadQr = () => {
         const qrImage = document.querySelector(
-          `[data-token="${token}"] img`
+          `[data-token="${token}"] img`,
         ) as Element;
         const qrSrc = qrImage.getAttribute("src");
         if (!qrSrc) return;
@@ -186,7 +187,7 @@ function DataTable<TData, TValue>({
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                   </TableHead>
                 );

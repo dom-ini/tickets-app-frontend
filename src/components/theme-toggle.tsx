@@ -1,8 +1,9 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { Button, ButtonProps } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+
+import { Button, ButtonProps } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const enum Theme {

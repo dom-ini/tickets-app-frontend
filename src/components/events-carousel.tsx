@@ -1,16 +1,19 @@
 "use client";
 
-import * as React from "react";
-import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import { Button } from "@/components/ui/button";
-import { EventCardVertical } from "@/components/event-card";
-import { ChevronLeft } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Event } from "@/lib/constants";
 
+import { useKeenSlider } from "keen-slider/react";
+import { ChevronLeft } from "lucide-react";
+import { useState } from "react";
+
+import { EventCardVertical } from "@/components/event-card";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
+
+import type { EventListItem } from "@/lib/api/events/types";
 interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {
-  events: Array<Event>;
+  events: Array<EventListItem>;
 }
 
 interface CarouselArrowProps
@@ -30,7 +33,7 @@ function CarouselArrow({ onClick, className }: CarouselArrowProps) {
 }
 
 export function EventsCarousel({ events, className }: CarouselProps) {
-  const [loaded, setLoaded] = React.useState(false);
+  const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     slides: { origin: "center", perView: "auto", spacing: 48 },
@@ -41,16 +44,20 @@ export function EventsCarousel({ events, className }: CarouselProps) {
 
   return (
     <div className={cn("relative px-5", className)}>
-      <div ref={sliderRef} className="keen-slider">
+      <div
+        ref={sliderRef}
+        className={cn("keen-slider", loaded ? null : "gap-12")}
+      >
         {events.map((event) => (
           <div
             className="keen-slider__slide max-w-[200px] min-w-[200px] sm:max-w-[260px] sm:min-w-[260px]"
             key={event.slug}
           >
-            <EventCardVertical
-              event={event}
-              className="w-[200px] sm:w-[260px]"
-            />
+            {loaded ? (
+              <EventCardVertical event={event} />
+            ) : (
+              <Skeleton className="w-[200px] h-[267px] sm:w-[260px] sm:h-[347px]" />
+            )}
           </div>
         ))}
       </div>

@@ -1,5 +1,6 @@
+import { AtSign, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
-import { Linkedin, Github, AtSign } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 
 export function Footer() {

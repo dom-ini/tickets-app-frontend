@@ -5,10 +5,11 @@ import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { SidebarNavItem } from "@/lib/constants";
+
+import type { NavigationItem } from "@/lib/types";
 
 interface SideNavigationProps extends React.HTMLAttributes<HTMLElement> {
-  items: Array<SidebarNavItem>;
+  items: Array<NavigationItem>;
 }
 
 export function SideNavigation({
@@ -22,7 +23,7 @@ export function SideNavigation({
     <nav
       className={cn(
         "flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1",
-        className
+        className,
       )}
       {...props}
     >
@@ -39,7 +40,7 @@ export function SideNavigation({
               pathname === item.href
                 ? "bg-accent"
                 : "hover:bg-transparent hover:underline",
-              "font-semibold"
+              "font-semibold",
             )}
           >
             {item.name}

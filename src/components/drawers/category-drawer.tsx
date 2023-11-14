@@ -1,14 +1,16 @@
-import { SheetClose, SheetContent, SheetHeader } from "@/components/ui/sheet";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { type Category, allEventsCategory } from "@/lib/constants";
+import { SheetClose, SheetContent, SheetHeader } from "@/components/ui/sheet";
 import { getCategories } from "@/lib/api/categories";
+import { allEventsCategory } from "@/lib/api/categories/constants";
+import { Category } from "@/lib/api/categories/types";
 
 type CategoryDrawerItemProps = {
   category: Category;

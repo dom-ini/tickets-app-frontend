@@ -1,11 +1,18 @@
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { BreadcrumbNavigationItem } from "@/lib/types";
 
-const helpContent = [
+type HelpItem = {
+  question: string;
+  answer: string;
+};
+
+const helpContent: Array<HelpItem> = [
   {
     question: "Dlaczego lody smakują lepiej latem?",
     answer:
@@ -57,10 +64,13 @@ const helpContent = [
   },
 ];
 
+const breadcrumbElements: Array<BreadcrumbNavigationItem> = [{ name: "Pomoc" }];
+
 export default function Help() {
   return (
-    <div className="container">
-      <h1 className="mt-8 mb-4 text-3xl font-bold tracking-tight">Pomoc</h1>
+    <div className="container my-10">
+      <Breadcrumbs elements={breadcrumbElements} className="mb-8" />
+      <h1 className="mb-4 text-3xl font-bold tracking-tight">Pomoc</h1>
       <article>
         <h2 className="mb-2">
           Tutaj znajdziesz odpowiedzi na (prawdopodobnie) nigdy niezadawane

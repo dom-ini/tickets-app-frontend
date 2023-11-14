@@ -1,14 +1,16 @@
-import * as React from "react";
-import { LocationCard } from "@/components/location-card";
-import { ReserveTicketCard } from "@/components/reserve-ticket-card";
-import { SpeakerCard } from "@/components/speaker-card";
-import { Button } from "@/components/ui/button";
-import { getEventBySlug } from "@/lib/api/events";
 import { format } from "date-fns";
 import { pl } from "date-fns/locale";
 import { Calendar, MapPin, MapPinned } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import { LocationCard } from "@/components/location-card";
+import { ReserveTicketCard } from "@/components/reserve-ticket-card";
+import { SpeakerCard } from "@/components/speaker-card";
+import { Button } from "@/components/ui/button";
+import { getEventBySlug } from "@/lib/api/events";
+import { BreadcrumbNavigationItem } from "@/lib/types";
 
 type EventPageProps = {
   params: {
@@ -20,16 +22,21 @@ export default async function EventPage({ params }: EventPageProps) {
   const event = await getEventBySlug(params.slug);
   if (!event) notFound();
   const eventHasSpeakers = event.speakers.length > 0;
+  const breadcrumbElements: Array<BreadcrumbNavigationItem> = [
+    { name: "Wydarzenie" },
+    { name: event.name },
+  ];
 
   return (
     <div className="container my-10">
+      <Breadcrumbs elements={breadcrumbElements} className="mb-8" />
       <h1 className="font-semibold text-4xl md:text-5xl mb-4">{event.name}</h1>
       <div className="flex flex-col gap-2 sm:flex-row sm:gap-6 mb-2">
-        <div className="flex gap-1 text-muted-foreground text-sm">
+        <div className="flex items-center gap-1 text-muted-foreground text-sm">
           <Calendar size="1rem" />
           <span>{format(event.heldAt, "do MMMM y", { locale: pl })}</span>
         </div>
-        <div className="flex gap-1 text-muted-foreground text-sm">
+        <div className="flex items-center gap-1 text-muted-foreground text-sm">
           <MapPin size="1rem" />
           <span>
             {event.location.name}, {event.location.city}
@@ -89,7 +96,7 @@ export default async function EventPage({ params }: EventPageProps) {
           <h2 className="text-3xl font-semibold" id="zarezerwuj-bilet">
             Zarezerwuj bilet
           </h2>
-          <ReserveTicketCard {...event} />
+          <ReserveTicketCard {...event} id="" />
           <h3 className="text-3xl font-semibold" id="o-wydarzeniu">
             O wydarzeniu
           </h3>
@@ -104,7 +111,7 @@ export default async function EventPage({ params }: EventPageProps) {
               </h3>
               <div className="my-10 flex flex-wrap gap-8">
                 {event.speakers.map((speaker) => (
-                  <SpeakerCard key={speaker.slug} {...speaker} />
+                  <SpeakerCard key={speaker.slug} {...speaker} id="" />
                 ))}
               </div>
             </>

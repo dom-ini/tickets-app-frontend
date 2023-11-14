@@ -1,8 +1,10 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+
+import { PasswordInput } from "@/components/password-input";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,9 +14,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { PasswordInput } from "@/components/password-input";
 import { emailField, passwordField } from "@/lib/zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const formSchema = z
   .object({

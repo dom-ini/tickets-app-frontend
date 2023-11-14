@@ -1,4 +1,7 @@
 import { Blocks, ChevronDown } from "lucide-react";
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,11 +13,10 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { getCategories } from "@/lib/api/categories";
-import { Category, allEventsCategory } from "@/lib/constants";
+import { allEventsCategory } from "@/lib/api/categories/constants";
 
+import type { Category } from "@/lib/api/categories/types";
 type CategoryDropdownItemProps = {
   category: Category;
 };

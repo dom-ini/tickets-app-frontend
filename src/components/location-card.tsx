@@ -1,6 +1,7 @@
-import { cn } from "@/lib/utils";
 import { Building2, ChevronRight } from "lucide-react";
 import Link from "next/link";
+
+import { cn } from "@/lib/utils";
 
 interface LocationCardProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;

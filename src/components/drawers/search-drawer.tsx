@@ -1,5 +1,5 @@
-import { SheetContent, SheetHeader } from "@/components/ui/sheet";
 import { EventSearch } from "@/components/event-search";
+import { SheetContent, SheetHeader } from "@/components/ui/sheet";
 
 export function SearchDrawer() {
   return (

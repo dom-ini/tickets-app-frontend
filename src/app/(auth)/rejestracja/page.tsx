@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { RegistrationForm } from "@/components/forms/auth/registration-form";
 import { Button } from "@/components/ui/button";
 import {
@@ -6,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Link from "next/link";
 
 export default function RegisterPage() {
   return (

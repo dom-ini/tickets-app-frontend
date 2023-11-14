@@ -1,8 +1,11 @@
+import Image from "next/image";
+import { notFound } from "next/navigation";
+
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { EventsCarousel } from "@/components/events-carousel";
 import { getEvents } from "@/lib/api/events";
 import { getSpeakerBySlug } from "@/lib/api/speakers";
-import Image from "next/image";
-import { notFound } from "next/navigation";
+import { BreadcrumbNavigationItem } from "@/lib/types";
 
 type SpeakerPageProps = {
   params: {
@@ -13,10 +16,18 @@ type SpeakerPageProps = {
 export default async function SpeakerPage({ params }: SpeakerPageProps) {
   const speaker = await getSpeakerBySlug(params.slug);
   if (!speaker) notFound();
-  const events = await getEvents();
+  const events = await getEvents({
+    filters: { speakerId: speaker.id },
+    pagination: { limit: "10" },
+  });
+  const breadcrumbElements: Array<BreadcrumbNavigationItem> = [
+    { name: "Prowadzący" },
+    { name: speaker.name },
+  ];
 
   return (
     <div className="container my-10">
+      <Breadcrumbs elements={breadcrumbElements} className="mb-8" />
       <h1 className="font-semibold text-4xl md:text-5xl mb-4">
         {speaker.name}
       </h1>
@@ -39,10 +50,14 @@ export default async function SpeakerPage({ params }: SpeakerPageProps) {
           ></div>
         </article>
       </div>
-      <h3 className="text-3xl font-semibold">
-        {speaker.name} - najnowsze wydarzenia
-      </h3>
-      <EventsCarousel className="my-6" events={events} />
+      {events.items.length > 1 && (
+        <>
+          <h3 className="text-3xl font-semibold">
+            {speaker.name} - najnowsze wydarzenia
+          </h3>
+          <EventsCarousel className="my-6" events={events.items} />
+        </>
+      )}
     </div>
   );
 }

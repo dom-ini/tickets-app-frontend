@@ -1,6 +1,7 @@
-import { SheetClose, SheetContent, SheetHeader } from "@/components/ui/sheet";
 import { Blocks, ChevronRight, HelpCircle, Home, User } from "lucide-react";
 import Link from "next/link";
+
+import { SheetClose, SheetContent, SheetHeader } from "@/components/ui/sheet";
 
 type MenuItemProps = {
   href: string;

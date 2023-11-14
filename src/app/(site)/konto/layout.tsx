@@ -1,8 +1,9 @@
 import { SideNavigation } from "@/components/side-navigation";
 import { Separator } from "@/components/ui/separator";
-import { SidebarNavItem } from "@/lib/constants";
 
-const sidebarNavItems: Array<SidebarNavItem> = [
+import type { NavigationItem } from "@/lib/types";
+
+const NavigationItems: Array<NavigationItem> = [
   {
     name: "Moje bilety",
     href: "/konto/bilety",
@@ -30,7 +31,7 @@ export default function AccountLayout({
       <Separator className="my-6" />
       <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
         <aside className="lg:w-1/5">
-          <SideNavigation items={sidebarNavItems} />
+          <SideNavigation items={NavigationItems} />
         </aside>
         <div className="flex-1">{children}</div>
       </div>

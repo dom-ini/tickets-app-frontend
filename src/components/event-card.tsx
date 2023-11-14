@@ -1,20 +1,21 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { type Event } from "@/lib/constants";
 import { format } from "date-fns";
-import { cn } from "@/lib/utils";
 import { Calendar, ChevronRight, MapPin } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+import type { EventListItem } from "@/lib/api/events/types";
 interface EventCardProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  event: Event;
+  event: EventListItem;
 }
 
 export function EventCardVertical({ event, className }: EventCardProps) {
   return (
     <Link
       href={"/wydarzenie/" + event.slug}
-      className={cn("group w-52", className)}
+      className={cn("group w-[200px] sm:w-[260px]", className)}
     >
       <div className="overflow-hidden rounded-sm transition-all">
         <Image
@@ -23,7 +24,7 @@ export function EventCardVertical({ event, className }: EventCardProps) {
           alt={event.name}
           width="300"
           height="400"
-          className="group-hover:scale-125 group-hover:brightness-75 transition-all duration-300"
+          className="group-hover:scale-125 group-hover:brightness-75 transition-all duration-300 w-[200px] h-[267px] sm:w-[260px] sm:h-[347px] object-cover"
         />
       </div>
       <p className="text-lg text-center mt-3 font-semibold group-hover:text-primary dark:group-hover:text-secondary transition-all">
@@ -43,7 +44,7 @@ export function EventCardHorizontal({ event, className }: EventCardProps) {
       href={"/wydarzenie/" + event.slug}
       className={cn(
         "group flex flex-col sm:flex-row gap-4 sm:gap-6 items-center w-full p-4 shadow border hover:shadow-lg transition-all duration-300",
-        className
+        className,
       )}
     >
       <Image

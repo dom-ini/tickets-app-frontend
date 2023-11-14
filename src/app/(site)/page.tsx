@@ -1,9 +1,9 @@
-import { EventsCarousel } from "@/components/events-carousel";
 import { EventSearch } from "@/components/event-search";
+import { EventsCarousel } from "@/components/events-carousel";
 import { getEvents } from "@/lib/api/events";
 
 export default async function HomePage() {
-  const events = await getEvents();
+  const events = await getEvents({ pagination: { limit: "10" } });
 
   return (
     <>
@@ -21,7 +21,7 @@ export default async function HomePage() {
         <h2 className="text-center mb-10 text-3xl font-bold">
           Najnowsze wydarzenia
         </h2>
-        <EventsCarousel events={events} />
+        <EventsCarousel events={events.items} />
       </div>
     </>
   );

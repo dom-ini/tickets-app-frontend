@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { SkipToContent } from "@/components/skip-to-content";
 import { Card } from "@/components/ui/card";
 
 export default function AuthLayout({
@@ -9,8 +10,9 @@ export default function AuthLayout({
 }) {
   return (
     <>
+      <SkipToContent href="#content" />
       <Header isAuthPage />
-      <main>
+      <main id="content">
         <div className="flex pt-20 sm:pt-0 sm:min-h-screen items-center">
           <div className="flex-1 h-screen bg-login bg-cover bg-center hidden sm:block"></div>
           <div className="flex-1 bg-background">

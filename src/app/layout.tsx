@@ -1,11 +1,15 @@
-import Providers from "./providers";
 import "./globals.css";
-import type { Metadata } from "next";
+
 import { Lexend_Deca } from "next/font/google";
 import React from "react";
-import { cn } from "@/lib/utils";
-import { NavigationMobile } from "@/components/navigation-mobile";
 
+import { NavigationMobile } from "@/components/navigation-mobile";
+import { ScrollToTop } from "@/components/scroll-to-top";
+import { cn } from "@/lib/utils";
+
+import Providers from "./providers";
+
+import type { Metadata } from "next";
 const baseFont = Lexend_Deca({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -25,13 +29,14 @@ export default function RootLayout({
     <html lang="pl" suppressHydrationWarning>
       <body
         className={cn(
-          `min-h-screen bg-background font-sans antialiased ${baseFont.variable}`
+          `min-h-screen bg-background font-sans antialiased ${baseFont.variable}`,
         )}
       >
         <Providers>
           {children}
           <NavigationMobile />
         </Providers>
+        <ScrollToTop />
       </body>
     </html>
   );

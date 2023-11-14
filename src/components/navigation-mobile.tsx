@@ -1,10 +1,11 @@
-import { cn } from "@/lib/utils";
 import { Blocks, Home, Menu, Search, User } from "lucide-react";
 import Link from "next/link";
-import { Sheet, SheetTrigger } from "@/components/ui/sheet";
+
 import { CategoryDrawer } from "@/components/drawers/category-drawer";
 import { MenuDrawer } from "@/components/drawers/menu-drawer";
 import { SearchDrawer } from "@/components/drawers/search-drawer";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 type NavigationMobileItemProps = {
   name: string;
@@ -64,7 +65,7 @@ function NavigationMobileItem({
     <li
       className={cn(
         "h-full hover:-translate-y-1 hover:text-primary dark:hover:text-secondary transition-all group",
-        className
+        className,
       )}
     >
       {href ? (

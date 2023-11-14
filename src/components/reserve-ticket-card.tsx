@@ -1,8 +1,9 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { CalendarCheck2 } from "lucide-react";
 import { format } from "date-fns";
 import { pl } from "date-fns/locale";
+import { CalendarCheck2 } from "lucide-react";
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 
 interface ReserveTicketCardProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;

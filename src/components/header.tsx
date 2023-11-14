@@ -1,9 +1,10 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { CategoryDropdown } from "@/components/category-dropdown";
 import { User } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+import { CategoryDropdown } from "@/components/category-dropdown";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 type HeaderProps = {
@@ -30,7 +31,7 @@ export function Header({ isAuthPage }: HeaderProps) {
               "h-auto w-[120px]",
               isAuthPage
                 ? "sm:brightness-0 sm:invert dark:brightness-0 dark:invert"
-                : "dark:brightness-0 dark:invert"
+                : "dark:brightness-0 dark:invert",
             )}
           />
         </Link>

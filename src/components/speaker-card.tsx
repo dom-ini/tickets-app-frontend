@@ -1,7 +1,7 @@
-import * as React from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
+
+import { cn } from "@/lib/utils";
 
 interface SpeakerCardProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;

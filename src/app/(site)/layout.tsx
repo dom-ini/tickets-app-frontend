@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { SkipToContent } from "@/components/skip-to-content";
 
 export default function SiteLayout({
   children,
@@ -8,8 +9,9 @@ export default function SiteLayout({
 }) {
   return (
     <>
+      <SkipToContent href="#content" />
       <Header />
-      <main>{children}</main>
+      <main id="content">{children}</main>
       <Footer />
     </>
   );

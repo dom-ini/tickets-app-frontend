@@ -1,9 +1,10 @@
 "use client";
 
-import * as React from "react";
-import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
-import { cn } from "@/lib/utils";
+import { useMemo } from "react";
+
 import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
+import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
 
 interface LocationMapProps extends React.HTMLAttributes<HTMLDivElement> {
   latitude: number;
@@ -17,16 +18,16 @@ export function LocationMap({
   latitude,
   longitude,
 }: LocationMapProps) {
-  const mapCenter = React.useMemo(
+  const mapCenter = useMemo(
     () => ({ lat: latitude, lng: longitude }),
-    [latitude, longitude]
+    [latitude, longitude],
   );
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY as string,
   });
   const handleMarkerClick = () => {
     window.open(
-      `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
+      `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`,
     );
   };
 
