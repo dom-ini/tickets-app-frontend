@@ -17,7 +17,7 @@ export default async function SpeakerPage({ params }: SpeakerPageProps) {
   const speaker = await getSpeakerBySlug(params.slug);
   if (!speaker) notFound();
   const events = await getEvents({
-    filters: { speakerId: speaker.id },
+    filters: { speakerId: speaker.id, isActive: true },
     pagination: { limit: "10" },
   });
   const breadcrumbElements: Array<BreadcrumbNavigationItem> = [

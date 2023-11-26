@@ -18,7 +18,7 @@ export default async function LocationPage({ params }: LocationPageProps) {
   const location = await getLocationBySlug(params.slug);
   if (!location) notFound();
   const events = await getEvents({
-    filters: { locationId: location.id },
+    filters: { locationId: location.id, isActive: true },
     pagination: { limit: "10" },
   });
   const breadcrumbElements: Array<BreadcrumbNavigationItem> = [

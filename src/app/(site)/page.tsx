@@ -3,7 +3,10 @@ import { EventsCarousel } from "@/components/events-carousel";
 import { getEvents } from "@/lib/api/events";
 
 export default async function HomePage() {
-  const events = await getEvents({ pagination: { limit: "10" } });
+  const events = await getEvents({
+    pagination: { limit: "10" },
+    filters: { isActive: true },
+  });
 
   return (
     <>

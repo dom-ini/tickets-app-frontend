@@ -49,7 +49,7 @@ function getOffsetedDateByDay(date: string) {
 }
 
 function getEventSearchFilters(params?: SearchParams): Filters {
-  const filters: Filters = {};
+  const filters: Filters = { isActive: true };
   if (params?.name) {
     filters.name = params.name;
   }
@@ -70,7 +70,7 @@ function getEventSearchFilters(params?: SearchParams): Filters {
 
 function getCategoriesSlugs(
   categories: Array<Category>,
-  result: Array<{ slug: Array<string> }> = [],
+  result: Array<{ slug: Array<string> }> = []
 ) {
   for (const category of categories) {
     result.push({ slug: [category.slug] });
@@ -119,7 +119,7 @@ export default async function CategoryPage({
       ...categories.map((cat) => ({
         name: cat.name,
         href: `/kategorie/${cat.slug}`,
-      })),
+      }))
     );
     eventOptions.filters.categoryId = category.id;
   }
