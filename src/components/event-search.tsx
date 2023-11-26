@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { pl } from "date-fns/locale";
 import { Search } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { DateRange } from "react-day-picker";
 
 import { CitySelect } from "@/components/city-select";
@@ -38,11 +38,13 @@ interface EventSearchProps extends React.HTMLAttributes<HTMLDivElement> {
     heldAtTo?: Date;
   };
   preservePath?: boolean;
+  submitButton?: ReactNode;
 }
 
 export function EventSearch({
   className,
   initialData,
+  submitButton,
   preservePath = false,
 }: EventSearchProps) {
   const searchParams = useSearchParams();
@@ -106,9 +108,11 @@ export function EventSearch({
           className="rounded-none"
         />
       </div>
-      <Button className="rounded-s-none" type="submit">
-        Szukaj
-      </Button>
+      {submitButton || (
+        <Button className="rounded-s-none" type="submit">
+          Szukaj
+        </Button>
+      )}
     </form>
   );
 }
