@@ -1,5 +1,7 @@
 "use client";
 
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -9,11 +11,15 @@ import {
   Form,
   FormControl,
   FormDescription,
+  FormErrorMessage,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { toast } from "@/components/ui/use-toast";
+import { updateUser } from "@/lib/api/users";
+import { InvalidCurrentPasswordError } from "@/lib/api/users/errors";
 import { currentPasswordField, passwordField } from "@/lib/zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -29,6 +35,8 @@ const formSchema = z
   });
 
 export function PasswordChangeForm() {
+  const [formError, setFormError] = useState("");
+  const [formLoading, setFormLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     mode: "onTouched",
     resolver: zodResolver(formSchema),
@@ -39,8 +47,28 @@ export function PasswordChangeForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setFormError("");
+    setFormLoading(true);
+    try {
+      await updateUser({
+        newPassword: values.password,
+        currentPassword: values.currentPassword,
+      });
+      toast({
+        title: "Hasło zmienione",
+        description: "Twoje hasło zostało zmienione pomyślnie.",
+      });
+      form.reset();
+    } catch (err) {
+      if (err instanceof InvalidCurrentPasswordError) {
+        setFormError("Nieprawidłowe aktualne hasło");
+      } else {
+        setFormError("Wystąpił błąd podczas zmiany hasła. Spróbuj ponownie");
+      }
+    } finally {
+      setFormLoading(false);
+    }
   }
 
   return (
@@ -103,8 +131,9 @@ export function PasswordChangeForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full mt-2">
-          Zmień hasło
+        {formError && <FormErrorMessage>{formError}</FormErrorMessage>}
+        <Button type="submit" className="w-full mt-2" disabled={formLoading}>
+          {formLoading ? <Loader2 className="animate-spin" /> : "Zmień hasło"}
         </Button>
       </form>
     </Form>

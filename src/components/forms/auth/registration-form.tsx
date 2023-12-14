@@ -1,5 +1,8 @@
 "use client";
 
+import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -8,12 +11,16 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormErrorMessage,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { toast } from "@/components/ui/use-toast";
+import { register } from "@/lib/api/users";
+import { EmailAlreadyTakenError } from "@/lib/api/users/errors";
 import { emailField, passwordField } from "@/lib/zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -29,6 +36,9 @@ const formSchema = z
   });
 
 export function RegistrationForm() {
+  const [formError, setFormError] = useState("");
+  const [formLoading, setFormLoading] = useState(false);
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     mode: "onTouched",
     resolver: zodResolver(formSchema),
@@ -39,8 +49,26 @@ export function RegistrationForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setFormError("");
+    setFormLoading(true);
+    try {
+      await register({ email: values.email, password: values.password });
+      toast({
+        title: "Rejestracja pomyślna",
+        description:
+          "Na podany adres e-mail wysłaliśmy link do aktywacji konta. Aktywuj konto, aby móc się zalogować",
+      });
+      router.replace("/logowanie");
+    } catch (err) {
+      if (err instanceof EmailAlreadyTakenError) {
+        setFormError("Podany adres e-mail jest już zajęty");
+      } else {
+        setFormError("Wystąpił błąd podczas rejestracji. Spróbuj ponownie");
+      }
+    } finally {
+      setFormLoading(false);
+    }
   }
 
   return (
@@ -100,8 +128,13 @@ export function RegistrationForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full mt-2">
-          Zarejestruj się
+        {formError && <FormErrorMessage>{formError}</FormErrorMessage>}
+        <Button type="submit" disabled={formLoading}>
+          {formLoading ? (
+            <Loader2 className="animate-spin" />
+          ) : (
+            "Zarejestruj się"
+          )}
         </Button>
       </form>
     </Form>

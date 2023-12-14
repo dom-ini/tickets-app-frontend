@@ -6,6 +6,9 @@ const nextConfig = {
       "ticketsapp-media.s3.eu-central-1.amazonaws.com",
     ],
   },
+  env: {
+    apiUrl: process.env.API_URL,
+  },
 };
 
 module.exports = nextConfig;

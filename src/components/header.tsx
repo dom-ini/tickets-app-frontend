@@ -1,10 +1,9 @@
-import { User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { CategoryDropdown } from "@/components/category-dropdown";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Button } from "@/components/ui/button";
+import { UserButton } from "@/components/user-button";
 import { cn } from "@/lib/utils";
 
 type HeaderProps = {
@@ -31,7 +30,7 @@ export function Header({ isAuthPage }: HeaderProps) {
               "h-auto w-[120px]",
               isAuthPage
                 ? "sm:brightness-0 sm:invert dark:brightness-0 dark:invert"
-                : "dark:brightness-0 dark:invert",
+                : "dark:brightness-0 dark:invert"
             )}
           />
         </Link>
@@ -41,13 +40,7 @@ export function Header({ isAuthPage }: HeaderProps) {
           </div>
         )}
         <ThemeToggle className="ms-auto" variant="ghost" />
-        {!isAuthPage && (
-          <Button variant="ghost" asChild className="hidden sm:block">
-            <Link href="/konto/bilety">
-              <User />
-            </Link>
-          </Button>
-        )}
+        {!isAuthPage && <UserButton />}
       </div>
     </header>
   );

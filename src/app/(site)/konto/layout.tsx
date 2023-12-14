@@ -1,24 +1,45 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useCallback, useMemo } from "react";
+
 import { SideNavigation } from "@/components/side-navigation";
 import { Separator } from "@/components/ui/separator";
+import useUser from "@/hooks/use-user";
 
 import type { NavigationItem } from "@/lib/types";
-
-const NavigationItems: Array<NavigationItem> = [
-  {
-    name: "Moje bilety",
-    href: "/konto/bilety",
-  },
-  {
-    name: "Dane logowania",
-    href: "/konto/dane-logowania",
-  },
-];
 
 export default function AccountLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { logout } = useUser();
+  const { replace } = useRouter();
+
+  const handleLogout = useCallback(async () => {
+    await logout();
+    replace("/logowanie");
+  }, [replace, logout]);
+
+  const navigationItems = useMemo<Array<NavigationItem>>(
+    () => [
+      {
+        name: "Moje bilety",
+        href: "/konto/bilety",
+      },
+      {
+        name: "Dane logowania",
+        href: "/konto/dane-logowania",
+      },
+      {
+        name: "Wyloguj",
+        onClick: handleLogout,
+      },
+    ],
+    [handleLogout]
+  );
+
   return (
     <div className="container space-y-6 mt-8 mb-16">
       <div className="space-y-1">
@@ -31,7 +52,7 @@ export default function AccountLayout({
       <Separator className="my-6" />
       <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
         <aside className="lg:w-1/5">
-          <SideNavigation items={NavigationItems} />
+          <SideNavigation items={navigationItems} />
         </aside>
         <div className="flex-1">{children}</div>
       </div>

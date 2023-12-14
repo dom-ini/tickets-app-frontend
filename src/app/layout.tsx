@@ -5,6 +5,7 @@ import React from "react";
 
 import { NavigationMobile } from "@/components/navigation-mobile";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 
 import Providers from "./providers";
@@ -29,11 +30,12 @@ export default function RootLayout({
     <html lang="pl" suppressHydrationWarning>
       <body
         className={cn(
-          `min-h-screen bg-background font-sans antialiased ${baseFont.variable}`,
+          `min-h-screen bg-background font-sans antialiased ${baseFont.variable}`
         )}
       >
         <Providers>
           {children}
+          <Toaster />
           <NavigationMobile />
         </Providers>
         <ScrollToTop />
