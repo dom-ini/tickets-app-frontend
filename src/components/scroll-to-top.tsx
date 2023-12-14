@@ -20,7 +20,7 @@ export function ScrollToTop() {
     return () => {
       window.removeEventListener("scroll", toggleVisibility);
     };
-  }, []);
+  }, [setIsVisible]);
 
   const scrollToTop = () => {
     isVisible &&
@@ -34,7 +34,7 @@ export function ScrollToTop() {
     <Button
       className={cn(
         "fixed bottom-20 sm:bottom-4 right-4 rounded-sm p-2 transition-all z-[100]",
-        isVisible ? "opacity-100" : "opacity-0",
+        isVisible ? "opacity-100" : "opacity-0"
       )}
       variant="ghost"
       size="icon"
