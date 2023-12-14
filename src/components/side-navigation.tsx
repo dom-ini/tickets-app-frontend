@@ -21,10 +21,7 @@ export function SideNavigation({
 
   return (
     <nav
-      className={cn(
-        "flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1",
-        className,
-      )}
+      className={cn("flex gap-2 flex-col sm:flex-row lg:flex-col", className)}
       {...props}
     >
       {items.map((item) => (
@@ -33,14 +30,15 @@ export function SideNavigation({
           variant="ghost"
           className="justify-start"
           asChild
+          onClick={item.onClick}
         >
           <Link
-            href={item.href}
+            href={item.href || "#"}
             className={cn(
               pathname === item.href
                 ? "bg-accent"
                 : "hover:bg-transparent hover:underline",
-              "font-semibold",
+              "font-semibold"
             )}
           >
             {item.name}
