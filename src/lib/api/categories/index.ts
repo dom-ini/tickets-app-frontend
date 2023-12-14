@@ -9,6 +9,7 @@ import type {
   Category,
   CategoryWithoutChildren,
 } from "@/lib/api/categories/types";
+
 export async function getCategories(): Promise<Array<Category>> {
   const data = await fetchData("/event-types", {
     next: { revalidate: 60 },
@@ -17,7 +18,7 @@ export async function getCategories(): Promise<Array<Category>> {
 }
 
 export async function getCategoryBySlug(
-  slug: string,
+  slug: string
 ): Promise<CategoryWithoutChildren | null> {
   try {
     const data = await fetchData(`/event-types/${slug}`, {
@@ -30,7 +31,7 @@ export async function getCategoryBySlug(
 }
 
 export async function getCategoryHierarchyBySlug(
-  slug: string,
+  slug: string
 ): Promise<Array<CategoryWithoutChildren>> {
   const data = await fetchData(`/event-types/${slug}/hierarchy`, {
     next: { revalidate: 60 },

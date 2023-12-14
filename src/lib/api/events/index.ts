@@ -25,7 +25,7 @@ export async function getEvents({
 }
 
 export async function getEventBySlug(
-  slug: string,
+  slug: string
 ): Promise<EventDetails | null> {
   try {
     const data = await fetchData(`/events/${slug}`, {

@@ -1,10 +1,9 @@
-import { format } from "date-fns";
-import { pl } from "date-fns/locale";
-import { Calendar, MapPin, MapPinned } from "lucide-react";
+import { MapPinned } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { EventInfo } from "@/components/event-info";
 import { LocationCard } from "@/components/location-card";
 import { ReserveTicketCard } from "@/components/reserve-ticket-card";
 import { SpeakerCard } from "@/components/speaker-card";
@@ -31,18 +30,7 @@ export default async function EventPage({ params }: EventPageProps) {
     <div className="container my-10">
       <Breadcrumbs elements={breadcrumbElements} className="mb-8" />
       <h1 className="font-semibold text-4xl md:text-5xl mb-4">{event.name}</h1>
-      <div className="flex flex-col gap-2 sm:flex-row sm:gap-6 mb-2">
-        <div className="flex items-center gap-1 text-muted-foreground text-sm">
-          <Calendar size="1rem" />
-          <span>{format(event.heldAt, "do MMMM y", { locale: pl })}</span>
-        </div>
-        <div className="flex items-center gap-1 text-muted-foreground text-sm">
-          <MapPin size="1rem" />
-          <span>
-            {event.location.name}, {event.location.city}
-          </span>
-        </div>
-      </div>
+      <EventInfo event={event} />
       <div className="flex flex-col md:flex-row gap-12 mt-8">
         <aside className="relative md:sticky md:top-20 self-start w-full md:w-auto">
           <Image
@@ -96,7 +84,10 @@ export default async function EventPage({ params }: EventPageProps) {
           <h2 className="text-3xl font-semibold" id="zarezerwuj-bilet">
             Zarezerwuj bilet
           </h2>
-          <ReserveTicketCard {...event} id="" />
+          <p className="text-muted-foreground mt-2 text-sm">
+            Pamiętaj, możesz zarezerwować tylko 1 bilet na dane wydarzenie!
+          </p>
+          <ReserveTicketCard {...event} id="" eventId={event.id} />
           <h3 className="text-3xl font-semibold" id="o-wydarzeniu">
             O wydarzeniu
           </h3>
@@ -120,7 +111,7 @@ export default async function EventPage({ params }: EventPageProps) {
             Lokalizacja
           </h3>
           <div className="my-6">
-            <LocationCard {...event.location} />
+            <LocationCard {...event.location} id="" />
             <Button asChild>
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${event.location.latitude},${event.location.longitude}`}
