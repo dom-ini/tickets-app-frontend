@@ -20,12 +20,14 @@ type SearchParams = {
   city?: string;
   heldAtFrom?: string;
   heldAtTo?: string;
+  onlyWithTickets?: string;
   sortBy?: string;
   skip?: string;
 };
 type SearchData = Pick<SearchParams, "city" | "name"> & {
   heldAtFrom?: Date;
   heldAtTo?: Date;
+  onlyWithTickets?: boolean;
 };
 
 type CategoryPageProps = {
@@ -41,6 +43,7 @@ function getInitialSearchData(params?: SearchParams): SearchData {
     city: params?.city,
     heldAtFrom: params?.heldAtFrom ? new Date(params.heldAtFrom) : undefined,
     heldAtTo: params?.heldAtTo ? new Date(params.heldAtTo) : undefined,
+    onlyWithTickets: params?.onlyWithTickets === "true" ? true : false,
   };
 }
 
@@ -64,6 +67,10 @@ function getEventSearchFilters(params?: SearchParams): Filters {
   }
   if (params?.heldAtTo) {
     filters.heldAtTo = getOffsetedDateByDay(params.heldAtTo);
+  }
+  if (params?.onlyWithTickets === "true") {
+    filters.onlyWithTickets = true;
+    filters.isActive = true;
   }
   return filters;
 }

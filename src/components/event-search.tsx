@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
+import { Checkbox } from "./ui/checkbox";
+
 function setQueryParam(
   params: URLSearchParams,
   name: string,
@@ -36,6 +38,7 @@ interface EventSearchProps extends React.HTMLAttributes<HTMLDivElement> {
     city?: string;
     heldAtFrom?: Date;
     heldAtTo?: Date;
+    onlyWithTickets?: boolean;
   };
   preservePath?: boolean;
   submitButton?: ReactNode;
@@ -56,6 +59,9 @@ export function EventSearch({
     from: initialData?.heldAtFrom,
     to: initialData?.heldAtTo,
   });
+  const [onlyWithTickets, setOnlyWithTickets] = useState(
+    initialData?.onlyWithTickets || false
+  );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -64,6 +70,7 @@ export function EventSearch({
     setQueryParam(params, "city", city);
     setQueryParam(params, "heldAtFrom", formatDate(date?.from));
     setQueryParam(params, "heldAtTo", formatDate(date?.to));
+    setQueryParam(params, "onlyWithTickets", onlyWithTickets.toString());
     if (preservePath) replace(`${pathname}?${params.toString()}`);
     else replace(`/kategorie?${params.toString()}`);
   };
@@ -71,7 +78,7 @@ export function EventSearch({
   return (
     <form
       className={cn(
-        "flex flex-col sm:flex-row gap-2 sm:gap-0 max-w-[800px] mx-auto rounded-sm",
+        "flex flex-col sm:flex-row gap-2 sm:gap-0 flex-wrap max-w-[800px] mx-auto rounded-sm",
         className
       )}
       onSubmit={handleSubmit}
@@ -109,10 +116,23 @@ export function EventSearch({
         />
       </div>
       {submitButton || (
-        <Button className="rounded-s-none" type="submit">
+        <Button className="rounded-s-none order-1 sm:order-none" type="submit">
           Szukaj
         </Button>
       )}
+      <div className="basis-full flex items-center gap-2 my-4 sm:mb-0">
+        <Checkbox
+          id="only-with-tickets"
+          checked={onlyWithTickets}
+          onCheckedChange={(checked) => setOnlyWithTickets(!!checked)}
+        />
+        <label
+          htmlFor="only-with-tickets"
+          className="text-sm leading-none cursor-pointer"
+        >
+          Tylko z dostępnymi biletami
+        </label>
+      </div>
     </form>
   );
 }

@@ -4,6 +4,7 @@ export type Filters = {
   heldAtFrom?: string;
   heldAtTo?: string;
   isActive?: boolean;
+  onlyWithTickets?: boolean;
   categoryId?: number;
   locationId?: number;
   speakerId?: number;
@@ -36,6 +37,7 @@ const filterNamesToApi: Required<{ [K in keyof Filters]: string }> = {
   heldAtFrom: "held_at__gte",
   heldAtTo: "held_at__lte",
   isActive: "is_active__exact",
+  onlyWithTickets: "only_with_available_tickets",
   categoryId: "event_type_id__exact",
   locationId: "location_id__exact",
   speakerId: "speakers__id__exact",
@@ -79,7 +81,7 @@ export class EventsURLBuilder {
 
   protected buildQueryParams(
     map: Record<string, string | boolean | number>,
-    namesToApi?: Record<string, string>,
+    namesToApi?: Record<string, string>
   ) {
     let query = "";
     for (const key in map) {
