@@ -10,7 +10,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <div className="bg-landing bg-cover bg-center">
+      <div className="bg-landing-sm sm:bg-landing bg-cover bg-center">
         <div className="container py-20 sm:py-32">
           <div className="p-8">
             <h1 className="text-center mb-6 text-4xl font-bold">
