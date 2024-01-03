@@ -15,7 +15,7 @@ export function SpeakerCard({
   slug,
   className,
 }: SpeakerCardProps) {
-  const speakerPhoto = photo || "https://picsum.photos/300/300?v=5";
+  const speakerPhoto = photo || "/images/placeholder-speaker.webp";
   const speakerUrl = `/prowadzacy/${slug}`;
 
   return (
@@ -23,7 +23,7 @@ export function SpeakerCard({
       <Link href={speakerUrl} className="group">
         <div className="rounded-full overflow-hidden">
           <Image
-            alt={name}
+            alt={`${name} - zdjęcie`}
             src={speakerPhoto}
             height={150}
             width={150}

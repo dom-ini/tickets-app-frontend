@@ -36,7 +36,7 @@ export default async function SpeakerPage({ params }: SpeakerPageProps) {
           <Image
             loading="lazy"
             alt={speaker.name}
-            src={speaker.photo || "/images/logo.svg"}
+            src={speaker.photo || "/images/placeholder-speaker.webp"}
             height="300"
             width="300"
             className="w-48 lg:w-56"
