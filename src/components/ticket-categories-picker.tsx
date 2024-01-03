@@ -5,15 +5,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 import useUser from "@/hooks/use-user";
 import { getTicketCategoriesByEvent } from "@/lib/api/ticket-categories";
 import { TicketCategory } from "@/lib/api/ticket-categories/types";
 import { getUserTickets, reserveTicket } from "@/lib/api/tickets";
 import { TicketAlreadyReservedError } from "@/lib/api/tickets/errors";
 import { cn } from "@/lib/utils";
-
-import { Button } from "./ui/button";
-import { toast } from "./ui/use-toast";
 
 type TicketCategoryCardProps = {
   category: TicketCategory;

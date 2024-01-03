@@ -31,6 +31,7 @@ export function ThemeToggle({ className, variant }: ButtonProps) {
       className={cn(className)}
       variant={variant}
       onClick={handleClickThemeToggle}
+      aria-label={`Zmień motyw na ${isThemeDark ? "jasny" : "ciemny"}`}
     >
       {isMounted && isThemeDark ? <Moon /> : <Sun />}
     </Button>

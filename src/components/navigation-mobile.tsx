@@ -65,12 +65,12 @@ function NavigationMobileItem({
     <li
       className={cn(
         "h-full hover:-translate-y-1 hover:text-primary dark:hover:text-secondary transition-all group",
-        className,
+        className
       )}
     >
       {href ? (
         <>
-          <Link href={href} className={buttonClassName}>
+          <Link href={href} className={buttonClassName} title={name}>
             {icon}
           </Link>
           <span className="sr-only">{name}</span>
@@ -78,7 +78,10 @@ function NavigationMobileItem({
       ) : (
         <>
           <Sheet>
-            <SheetTrigger className={cn("w-full", buttonClassName)}>
+            <SheetTrigger
+              className={cn("w-full", buttonClassName)}
+              title={name}
+            >
               {icon}
             </SheetTrigger>
             {drawer}

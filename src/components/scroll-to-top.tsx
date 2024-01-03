@@ -39,6 +39,7 @@ export function ScrollToTop() {
       variant="ghost"
       size="icon"
       onClick={scrollToTop}
+      aria-label="Przewiń stronę do góry"
     >
       <ChevronUp />
     </Button>

@@ -10,10 +10,9 @@ import { DateRange } from "react-day-picker";
 import { CitySelect } from "@/components/city-select";
 import { DatePicker } from "@/components/date-picker";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-
-import { Checkbox } from "./ui/checkbox";
 
 function setQueryParam(
   params: URLSearchParams,
@@ -125,8 +124,10 @@ export function EventSearch({
           id="only-with-tickets"
           checked={onlyWithTickets}
           onCheckedChange={(checked) => setOnlyWithTickets(!!checked)}
+          aria-labelledby="only-with-tickets-label"
         />
         <label
+          id="only-with-tickets-label"
           htmlFor="only-with-tickets"
           className="text-sm leading-none cursor-pointer"
         >

@@ -32,12 +32,13 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           className="absolute right-0 bottom-0"
           size="icon"
           onClick={handlePasswordVisibilityClick}
+          aria-label={`${passwordVisible ? "Ukryj" : "Pokaż"} hasło`}
         >
           {passwordVisible ? <Eye /> : <EyeOff />}
         </Button>
       </div>
     );
-  },
+  }
 );
 
 PasswordInput.displayName = "PasswordInput";

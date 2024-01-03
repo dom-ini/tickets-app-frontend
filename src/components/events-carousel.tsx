@@ -26,6 +26,7 @@ function CarouselArrow({ onClick, className }: CarouselArrowProps) {
       variant="secondary"
       onClick={onClick}
       className={cn(className)}
+      aria-label="Przewiń"
     >
       <ChevronLeft />
     </Button>

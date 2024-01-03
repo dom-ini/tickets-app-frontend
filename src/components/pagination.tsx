@@ -42,7 +42,7 @@ export function Pagination({
     <div
       className={cn(
         "flex flex-wrap gap-y-4 items-center justify-center sm:justify-end",
-        className,
+        className
       )}
     >
       <span className="text-muted-foreground basis-full sm:basis-auto text-center order-1 sm:order-none sm:mr-4">
@@ -53,6 +53,7 @@ export function Pagination({
         size="icon"
         onClick={() => handleSetSkip(0)}
         disabled={currentPage <= 1}
+        aria-label="Przejdź do pierwszej strony"
       >
         <ChevronFirst size="1.25rem" />
       </Button>
@@ -61,6 +62,7 @@ export function Pagination({
         size="icon"
         onClick={() => handleSetSkip(skip - pageSize)}
         disabled={currentPage <= 1}
+        aria-label="Poprzednia strona"
       >
         <ChevronLeft size="1.25rem" />
       </Button>
@@ -69,6 +71,7 @@ export function Pagination({
         size="icon"
         onClick={() => handleSetSkip(skip + pageSize)}
         disabled={currentPage >= pageCount}
+        aria-label="Następna strona"
       >
         <ChevronRight size="1.25rem" />
       </Button>
@@ -77,6 +80,7 @@ export function Pagination({
         size="icon"
         onClick={() => handleSetSkip(maxSkip)}
         disabled={currentPage >= pageCount}
+        aria-label="Przejdź do ostatniej strony"
       >
         <ChevronLast size="1.25rem" />
       </Button>

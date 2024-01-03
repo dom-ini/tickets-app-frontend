@@ -41,7 +41,12 @@ export function EventSearchResult({
           Wyniki wyszukiwania
         </p>
         <SortingDropdown />
-        <Button onClick={changeViewMode} size="icon" variant="ghost">
+        <Button
+          onClick={changeViewMode}
+          size="icon"
+          variant="ghost"
+          aria-label={`Zmień widok na ${isViewGrid ? "listę" : "siatkę"}`}
+        >
           {isViewGrid ? <LayoutGrid /> : <StretchHorizontal />}
         </Button>
       </div>

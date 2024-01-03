@@ -37,7 +37,7 @@ function CategoryDrawerItem({ category }: CategoryDrawerItemProps) {
               asChild
               className="[&[data-state=open]>svg]:rotate-180"
             >
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" aria-label="Rozwiń">
                 <ChevronDown className="transition-all" size="16" />
               </Button>
             </CollapsibleTrigger>

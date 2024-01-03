@@ -29,7 +29,7 @@ export function SortingDropdown({ className }: SortingDropdownProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className={cn(className)}>
-        <Button size="icon" variant="ghost">
+        <Button size="icon" variant="ghost" aria-label="Wybierz sortowanie">
           <ArrowUpDown />
         </Button>
       </DropdownMenuTrigger>

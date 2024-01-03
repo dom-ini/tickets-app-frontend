@@ -11,7 +11,12 @@ export function UserButton() {
   const buttonHref = isAuthenticated ? "/konto/bilety" : "/logowanie";
 
   return (
-    <Button variant="ghost" asChild className="hidden sm:block">
+    <Button
+      variant="ghost"
+      asChild
+      className="hidden sm:block"
+      aria-label={isAuthenticated ? "Moje konto" : "Logowanie"}
+    >
       <Link href={buttonHref}>
         <User />
       </Link>
