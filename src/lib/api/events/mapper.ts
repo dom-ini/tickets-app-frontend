@@ -1,11 +1,11 @@
-import type {
+import {
+  EventDetails,
   EventOrganizer,
   EventType,
-  EventDetails,
   PaginatedEvents,
 } from "@/lib/api/events/types";
-import type { Location, SimpleLocation } from "@/lib/api/locations/types";
-import type { Speaker } from "@/lib/api/speakers/types";
+import { Location, SimpleLocation } from "@/lib/api/locations/types";
+import { Speaker } from "@/lib/api/speakers/types";
 
 interface PaginatedApi<T> {
   items: Array<T>;
@@ -32,7 +32,7 @@ interface EventDetailsApi extends Omit<EventListItemApi, "location"> {
 }
 
 export function mapEventListItemsFromApi(
-  events: PaginatedApi<EventListItemApi>,
+  events: PaginatedApi<EventListItemApi>
 ): PaginatedEvents {
   const items = events.items.map((event) => ({
     ...event,

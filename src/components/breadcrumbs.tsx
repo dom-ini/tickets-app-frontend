@@ -1,11 +1,11 @@
 "use client";
 
-import type { BreadcrumbNavigationItem } from "@/lib/types";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 
+import { BreadcrumbNavigationItem } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 interface BreadcrumbsProps extends React.HTMLAttributes<HTMLDivElement> {

@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { EventListItem } from "@/lib/api/events/types";
 import { cn } from "@/lib/utils";
 
-import type { EventListItem } from "@/lib/api/events/types";
 interface EventCardProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   event: EventListItem;
 }

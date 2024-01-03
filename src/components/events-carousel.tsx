@@ -9,9 +9,9 @@ import { useState } from "react";
 import { EventCardVertical } from "@/components/event-card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { EventListItem } from "@/lib/api/events/types";
 import { cn } from "@/lib/utils";
 
-import type { EventListItem } from "@/lib/api/events/types";
 interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {
   events: Array<EventListItem>;
 }

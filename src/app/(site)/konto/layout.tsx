@@ -6,8 +6,7 @@ import { useCallback, useMemo } from "react";
 import { SideNavigation } from "@/components/side-navigation";
 import { Separator } from "@/components/ui/separator";
 import useUser from "@/hooks/use-user";
-
-import type { NavigationItem } from "@/lib/types";
+import { NavigationItem } from "@/lib/types";
 
 export default function AccountLayout({
   children,

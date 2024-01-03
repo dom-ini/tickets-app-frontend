@@ -4,11 +4,7 @@ import {
   mapCategoryFromApi,
   mapCategoryTreeFromApi,
 } from "@/lib/api/categories/mapper";
-
-import type {
-  Category,
-  CategoryWithoutChildren,
-} from "@/lib/api/categories/types";
+import { Category, CategoryWithoutChildren } from "@/lib/api/categories/types";
 
 export async function getCategories(): Promise<Array<Category>> {
   const data = await fetchData("/event-types", {

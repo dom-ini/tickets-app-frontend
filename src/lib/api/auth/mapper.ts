@@ -1,4 +1,4 @@
-import type { ResetPasswordPayload, TokenData } from "@/lib/api/auth/types";
+import { ResetPasswordPayload, TokenData } from "@/lib/api/auth/types";
 
 interface TokenDataApi {
   access_token: string;

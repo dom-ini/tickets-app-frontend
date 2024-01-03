@@ -11,9 +11,9 @@ import { Pagination } from "@/components/pagination";
 import { SortingDropdown } from "@/components/sorting-dropdown";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { EventListItem } from "@/lib/api/events/types";
 import { cn } from "@/lib/utils";
 
-import type { EventListItem } from "@/lib/api/events/types";
 interface EventSearchResultProps extends React.HTMLAttributes<HTMLDivElement> {
   events: Array<EventListItem>;
   eventsCount: number;

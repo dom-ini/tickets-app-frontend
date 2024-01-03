@@ -15,8 +15,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { getCategories } from "@/lib/api/categories";
 import { allEventsCategory } from "@/lib/api/categories/constants";
+import { Category } from "@/lib/api/categories/types";
 
-import type { Category } from "@/lib/api/categories/types";
 type CategoryDropdownItemProps = {
   category: Category;
 };

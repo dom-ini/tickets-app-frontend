@@ -1,4 +1,3 @@
-import type { EventDetails, PaginatedEvents } from "@/lib/api/events/types";
 import "server-only";
 
 import { fetchData } from "@/lib/api";
@@ -7,6 +6,7 @@ import {
   mapEventDetailsFromApi,
   mapEventListItemsFromApi,
 } from "@/lib/api/events/mapper";
+import { EventDetails, PaginatedEvents } from "@/lib/api/events/types";
 
 export async function getEvents({
   filters = {},

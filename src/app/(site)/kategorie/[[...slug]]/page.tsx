@@ -10,11 +10,11 @@ import {
   getCategoryBySlug,
   getCategoryHierarchyBySlug,
 } from "@/lib/api/categories";
+import { Category } from "@/lib/api/categories/types";
 import { getEvents } from "@/lib/api/events";
 import { EventDataOptions, Filters } from "@/lib/api/events/filters";
 import { BreadcrumbNavigationItem } from "@/lib/types";
 
-import type { Category } from "@/lib/api/categories/types";
 type SearchParams = {
   name?: string;
   city?: string;

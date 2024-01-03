@@ -1,5 +1,5 @@
-import type { SimpleLocation, Location } from "@/lib/api/locations/types";
-import type { Speaker } from "@/lib/api/speakers/types";
+import { Location, SimpleLocation } from "@/lib/api/locations/types";
+import { Speaker } from "@/lib/api/speakers/types";
 
 export type PaginatedEvents = {
   items: Array<EventListItem>;

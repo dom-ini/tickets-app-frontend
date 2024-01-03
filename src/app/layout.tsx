@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { Metadata } from "next";
 import { Lexend_Deca } from "next/font/google";
 import React from "react";
 
@@ -10,7 +11,6 @@ import { cn } from "@/lib/utils";
 
 import Providers from "./providers";
 
-import type { Metadata } from "next";
 const baseFont = Lexend_Deca({
   subsets: ["latin"],
   variable: "--font-sans",

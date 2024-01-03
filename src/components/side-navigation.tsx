@@ -4,9 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
+import { NavigationItem } from "@/lib/types";
 import { cn } from "@/lib/utils";
-
-import type { NavigationItem } from "@/lib/types";
 
 interface SideNavigationProps extends React.HTMLAttributes<HTMLElement> {
   items: Array<NavigationItem>;

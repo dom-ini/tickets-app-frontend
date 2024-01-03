@@ -1,9 +1,9 @@
 import { fetchData } from "@/lib/api";
 import { mapLocationFromApi } from "@/lib/api/locations/mapper";
+import { Location } from "@/lib/api/locations/types";
 
-import type { Location } from "@/lib/api/locations/types";
 export async function getLocationBySlug(
-  slug: string,
+  slug: string
 ): Promise<Location | null> {
   try {
     const data = await fetchData(`/locations/${slug}/`, {

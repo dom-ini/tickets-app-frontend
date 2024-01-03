@@ -1,7 +1,7 @@
 import { fetchData } from "@/lib/api";
 import { mapSpeakerFromApi } from "@/lib/api/speakers/mapper";
+import { Speaker } from "@/lib/api/speakers/types";
 
-import type { Speaker } from "@/lib/api/speakers/types";
 export async function getSpeakerBySlug(slug: string): Promise<Speaker | null> {
   try {
     const data = await fetchData(`/speakers/${slug}`, {
