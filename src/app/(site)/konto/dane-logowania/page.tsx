@@ -1,6 +1,12 @@
+import { Metadata } from "next";
+
 import { EmailChangeForm } from "@/components/forms/account/email-change-form";
 import { PasswordChangeForm } from "@/components/forms/account/password-change-form";
 import { Separator } from "@/components/ui/separator";
+
+export const metadata: Metadata = {
+  title: "Dane logowania",
+};
 
 export default function AccountPage() {
   return (

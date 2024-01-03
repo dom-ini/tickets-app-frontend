@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Link from "next/link";
 
 import { RegistrationForm } from "@/components/forms/auth/registration-form";
@@ -8,6 +9,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "Rejestracja",
+};
 
 export default function RegisterPage() {
   return (

@@ -1,4 +1,5 @@
 import { MapPin } from "lucide-react";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -13,6 +14,16 @@ type LocationPageProps = {
     slug: string;
   };
 };
+
+export async function generateMetadata({
+  params,
+}: LocationPageProps): Promise<Metadata> {
+  const location = await getLocationBySlug(params.slug);
+  const name = location?.name;
+  return {
+    title: name,
+  };
+}
 
 export default async function LocationPage({ params }: LocationPageProps) {
   const location = await getLocationBySlug(params.slug);

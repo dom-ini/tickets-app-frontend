@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -11,6 +12,19 @@ type ReserveTicketPageProps = {
     slug: string;
   };
 };
+
+export async function generateMetadata({
+  params,
+}: ReserveTicketPageProps): Promise<Metadata> {
+  const event = await getEventBySlug(params.slug);
+  const image = event?.posterHorizontal;
+  return {
+    title: "Zarezerwuj bilet",
+    openGraph: {
+      images: [image || "/images/og.png"],
+    },
+  };
+}
 
 export default async function ReserveTicketPage({
   params,

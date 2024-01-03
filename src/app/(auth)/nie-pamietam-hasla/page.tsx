@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Link from "next/link";
 
 import { ResetPasswordRequestForm } from "@/components/forms/auth/reset-password-request-form";
@@ -8,6 +9,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "Zresetuj hasło",
+};
 
 export default function ResetPasswordRequestPage() {
   return (

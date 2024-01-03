@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -15,6 +16,10 @@ type SearchParams = {
 
 type ActivationPageProps = {
   searchParams: SearchParams;
+};
+
+export const metadata: Metadata = {
+  title: "Aktywacja konta",
 };
 
 export default async function ActivationPage({

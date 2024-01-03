@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import {
   Accordion,
@@ -10,6 +12,10 @@ import { BreadcrumbNavigationItem } from "@/lib/types";
 type HelpItem = {
   question: string;
   answer: string;
+};
+
+export const metadata: Metadata = {
+  title: "Pomoc",
 };
 
 const helpContent: Array<HelpItem> = [

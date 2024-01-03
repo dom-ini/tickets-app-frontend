@@ -1,4 +1,5 @@
 import { addDays, format } from "date-fns";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -14,7 +15,6 @@ import { EventDataOptions, Filters } from "@/lib/api/events/filters";
 import { BreadcrumbNavigationItem } from "@/lib/types";
 
 import type { Category } from "@/lib/api/categories/types";
-
 type SearchParams = {
   name?: string;
   city?: string;
@@ -35,6 +35,10 @@ type CategoryPageProps = {
   params: {
     slug: string;
   };
+};
+
+export const metadata: Metadata = {
+  title: "Szukaj wydarzeń",
 };
 
 function getInitialSearchData(params?: SearchParams): SearchData {

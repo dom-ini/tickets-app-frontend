@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -12,6 +13,20 @@ type SpeakerPageProps = {
     slug: string;
   };
 };
+
+export async function generateMetadata({
+  params,
+}: SpeakerPageProps): Promise<Metadata> {
+  const speaker = await getSpeakerBySlug(params.slug);
+  const name = speaker?.name;
+  const image = speaker?.photo;
+  return {
+    title: name,
+    openGraph: {
+      images: [image || "/images/og.png"],
+    },
+  };
+}
 
 export default async function SpeakerPage({ params }: SpeakerPageProps) {
   const speaker = await getSpeakerBySlug(params.slug);

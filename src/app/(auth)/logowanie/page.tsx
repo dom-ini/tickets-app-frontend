@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Link from "next/link";
 
 import { LoginForm } from "@/components/forms/auth/login-form";
@@ -8,6 +9,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "Logowanie",
+};
 
 export default function LoginPage() {
   return (

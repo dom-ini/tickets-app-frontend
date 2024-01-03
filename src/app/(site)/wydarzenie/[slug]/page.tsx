@@ -1,4 +1,5 @@
 import { MapPinned } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -16,6 +17,20 @@ type EventPageProps = {
     slug: string;
   };
 };
+
+export async function generateMetadata({
+  params,
+}: EventPageProps): Promise<Metadata> {
+  const event = await getEventBySlug(params.slug);
+  const name = event?.name;
+  const image = event?.posterHorizontal;
+  return {
+    title: name,
+    openGraph: {
+      images: [image || "/images/og.png"],
+    },
+  };
+}
 
 export default async function EventPage({ params }: EventPageProps) {
   const event = await getEventBySlug(params.slug);
@@ -50,34 +65,42 @@ export default async function EventPage({ params }: EventPageProps) {
             className="block md:hidden w-full"
           />
           <nav className="hidden md:block mt-6">
-            <ul className="flex flex-col gap-3">
-              <a
-                href="#zarezerwuj-bilet"
-                className="hover:text-primary dark:hover:text-secondary transition-all"
-              >
-                <li>Zarezerwuj bilet</li>
-              </a>
-              <a
-                href="#o-wydarzeniu"
-                className="hover:text-primary dark:hover:text-secondary transition-all"
-              >
-                <li>O wydarzeniu</li>
-              </a>
-              {eventHasSpeakers && (
+            <menu className="flex flex-col gap-3">
+              <li>
                 <a
-                  href="#uczestnicy"
+                  href="#zarezerwuj-bilet"
                   className="hover:text-primary dark:hover:text-secondary transition-all"
                 >
-                  <li>Uczestnicy</li>
+                  Zarezerwuj bilet
                 </a>
+              </li>
+              <li>
+                <a
+                  href="#o-wydarzeniu"
+                  className="hover:text-primary dark:hover:text-secondary transition-all"
+                >
+                  O wydarzeniu
+                </a>
+              </li>
+              {eventHasSpeakers && (
+                <li>
+                  <a
+                    href="#uczestnicy"
+                    className="hover:text-primary dark:hover:text-secondary transition-all"
+                  >
+                    Uczestnicy
+                  </a>
+                </li>
               )}
-              <a
-                href="#lokalizacja"
-                className="hover:text-primary dark:hover:text-secondary transition-all"
-              >
-                <li>Lokalizacja</li>
-              </a>
-            </ul>
+              <li>
+                <a
+                  href="#lokalizacja"
+                  className="hover:text-primary dark:hover:text-secondary transition-all"
+                >
+                  Lokalizacja
+                </a>
+              </li>
+            </menu>
           </nav>
         </aside>
         <article className="flex-1">

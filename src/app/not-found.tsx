@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 export default function NotFound() {
   return (
     <>
+      <title>Nie znaleziono | Tickts</title>
       <Header />
       <main className="container">
         <div className="text-center my-16 max-w-lg mx-auto">
