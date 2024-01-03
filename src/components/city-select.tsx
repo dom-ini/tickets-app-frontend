@@ -39,9 +39,10 @@ export function CitySelect({
           variant="outline"
           role="combobox"
           aria-expanded={open}
+          aria-label="Wybierz miasto"
           className={cn(
             "w-full justify-between text-muted-foreground font-normal gap-3 group",
-            className,
+            className
           )}
         >
           <MapPin
@@ -51,7 +52,7 @@ export function CitySelect({
           <span
             className={cn(
               "flex-1 text-start",
-              value ? "text-accent-foreground" : "",
+              value ? "text-accent-foreground" : ""
             )}
           >
             {value
@@ -82,7 +83,7 @@ export function CitySelect({
                     "mr-2",
                     value === city.value.toLowerCase()
                       ? "opacity-100"
-                      : "opacity-0",
+                      : "opacity-0"
                   )}
                 />
                 {city.label}
