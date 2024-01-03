@@ -87,8 +87,9 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        login: "url('/images/login.jpg')",
-        landing: "url('/images/landing-alt.png')",
+        login: "url('/images/login.webp')",
+        landing: "url('/images/landing.webp')",
+        "landing-sm": "url('/images/landing-sm.webp')",
       },
     },
   },
