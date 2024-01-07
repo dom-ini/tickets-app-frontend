@@ -19,7 +19,11 @@ export function LocationCard({
 }: LocationCardProps) {
   const locationUrl = "/lokalizacja/" + slug;
   return (
-    <Link href={locationUrl} className={cn("group w-fit block", className)}>
+    <Link
+      href={locationUrl}
+      className={cn("group w-fit block", className)}
+      data-test="location-link"
+    >
       <div className="flex items-center gap-6 mb-6 p-4 border w-fit group-hover:text-primary dark:group-hover:text-secondary transition-all">
         <Building2 size="1.75rem" />
         <div>

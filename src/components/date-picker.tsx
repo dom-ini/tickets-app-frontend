@@ -29,8 +29,9 @@ export function DatePicker({ className, date, onDateChange }: DatePickerProps) {
           variant={"outline"}
           className={cn(
             "w-full justify-start text-left font-normal group px-3 text-muted-foreground",
-            className,
+            className
           )}
+          data-test="date-picker-btn"
         >
           <CalendarIcon className="mr-3 h-4 w-4 group-focus:text-primary dark:group-focus:text-secondary" />
           <span className={cn(date?.from && "text-accent-foreground")}>
@@ -50,7 +51,7 @@ export function DatePicker({ className, date, onDateChange }: DatePickerProps) {
           </span>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0">
+      <PopoverContent className="w-auto p-0" data-test="date-picker-popover">
         <Calendar
           mode="range"
           selected={date}

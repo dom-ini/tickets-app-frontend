@@ -74,6 +74,7 @@ export function ResetPasswordRequestForm() {
                 <Input
                   placeholder="Adres e-mail"
                   autoComplete="email"
+                  data-test="email-input"
                   {...field}
                 />
               </FormControl>
@@ -81,7 +82,11 @@ export function ResetPasswordRequestForm() {
             </FormItem>
           )}
         />
-        {formError && <FormErrorMessage>{formError}</FormErrorMessage>}
+        {formError && (
+          <FormErrorMessage data-test="request-reset-error">
+            {formError}
+          </FormErrorMessage>
+        )}
         <Button type="submit" disabled={formLoading}>
           {formLoading ? (
             <Loader2 className="animate-spin" />

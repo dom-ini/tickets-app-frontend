@@ -16,6 +16,7 @@ export function UserButton() {
       asChild
       className="hidden sm:block"
       aria-label={isAuthenticated ? "Moje konto" : "Logowanie"}
+      data-test="account-btn"
     >
       <Link href={buttonHref}>
         <User />

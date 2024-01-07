@@ -123,7 +123,10 @@ function TicketCategoriesPresenter({
           , aby zobaczyć szczegóły.
         </p>
       ) : (
-        <div className="flex flex-col sm:flex-row items-center flex-wrap gap-6">
+        <div
+          className="flex flex-col sm:flex-row items-center flex-wrap gap-6"
+          data-test="ticket-categories"
+        >
           {categories.length > 0
             ? categories.map((category) => (
                 <TicketCategoryCard

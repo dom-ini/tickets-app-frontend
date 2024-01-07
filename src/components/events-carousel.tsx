@@ -44,7 +44,7 @@ export function EventsCarousel({ events, className }: CarouselProps) {
   });
 
   return (
-    <div className={cn("relative px-5", className)}>
+    <div className={cn("relative px-5", className)} data-test="events-carousel">
       <div
         ref={sliderRef}
         className={cn("keen-slider", loaded ? null : "gap-12")}

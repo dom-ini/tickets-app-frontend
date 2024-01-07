@@ -44,7 +44,12 @@ export default async function EventPage({ params }: EventPageProps) {
   return (
     <div className="container my-10">
       <Breadcrumbs elements={breadcrumbElements} className="mb-8" />
-      <h1 className="font-semibold text-4xl md:text-5xl mb-4">{event.name}</h1>
+      <h1
+        className="font-semibold text-4xl md:text-5xl mb-4"
+        data-test="event-name"
+      >
+        {event.name}
+      </h1>
       <EventInfo event={event} />
       <div className="flex flex-col md:flex-row gap-12 mt-8">
         <aside className="relative md:sticky md:top-20 self-start w-full md:w-auto">

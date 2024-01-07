@@ -33,6 +33,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           size="icon"
           onClick={handlePasswordVisibilityClick}
           aria-label={`${passwordVisible ? "Ukryj" : "Pokaż"} hasło`}
+          data-test="show-password"
         >
           {passwordVisible ? <Eye /> : <EyeOff />}
         </Button>

@@ -80,6 +80,7 @@ export function EventSearch({
         "flex flex-col sm:flex-row gap-2 sm:gap-0 flex-wrap max-w-[800px] mx-auto rounded-sm",
         className
       )}
+      data-test="search-form"
       onSubmit={handleSubmit}
     >
       <div className="relative flex-1">
@@ -89,6 +90,7 @@ export function EventSearch({
           id="event-name"
           onChange={(e) => setName(e.target.value)}
           value={name}
+          data-test="search-name"
         />
         <label
           htmlFor="event-date"
@@ -115,7 +117,11 @@ export function EventSearch({
         />
       </div>
       {submitButton || (
-        <Button className="rounded-s-none order-1 sm:order-none" type="submit">
+        <Button
+          className="rounded-s-none order-1 sm:order-none"
+          type="submit"
+          data-test="search-submit-btn"
+        >
           Szukaj
         </Button>
       )}
@@ -125,6 +131,7 @@ export function EventSearch({
           checked={onlyWithTickets}
           onCheckedChange={(checked) => setOnlyWithTickets(!!checked)}
           aria-labelledby="only-with-tickets-label"
+          data-test="only-with-tickets-chk"
         />
         <label
           id="only-with-tickets-label"

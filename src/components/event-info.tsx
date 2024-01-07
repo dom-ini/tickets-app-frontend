@@ -13,11 +13,13 @@ export function EventInfo({ event }: EventInfoProps) {
     <div className="flex flex-col gap-2 sm:flex-row sm:gap-6 mb-2">
       <div className="flex items-center gap-1 text-muted-foreground text-sm">
         <Calendar size="1rem" />
-        <span>{format(event.heldAt, "do MMMM y", { locale: pl })}</span>
+        <span data-test="event-date">
+          {format(event.heldAt, "do MMMM y", { locale: pl })}
+        </span>
       </div>
       <div className="flex items-center gap-1 text-muted-foreground text-sm">
         <MapPin size="1rem" />
-        <span>
+        <span data-test="event-location">
           {event.location.name}, {event.location.city}
         </span>
       </div>

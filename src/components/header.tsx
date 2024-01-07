@@ -20,7 +20,7 @@ export function Header({ isAuthPage }: HeaderProps) {
   return (
     <header className={getHeaderClass(Boolean(isAuthPage))}>
       <div className="container flex h-16 items-center">
-        <Link href="/" className="mr-8">
+        <Link href="/" className="mr-8" data-test="brand">
           <Image
             src="/images/logo.svg"
             alt="Logo"

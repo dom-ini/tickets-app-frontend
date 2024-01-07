@@ -46,7 +46,10 @@ export function ReserveTicketCard({
         <span className="text-muted-foreground">{name}</span>
       </div>
       <Button type="button" className="basis-full sm:basis-auto" asChild>
-        <Link href={isAuthenticated ? pathname + "/zarezerwuj" : "/logowanie"}>
+        <Link
+          href={isAuthenticated ? pathname + "/zarezerwuj" : "/logowanie"}
+          data-test="reserve-ticket-link"
+        >
           <CalendarCheck size="1.25rem" />
           <span className="ms-2 md:hidden lg:inline">Zarezerwuj</span>
         </Link>

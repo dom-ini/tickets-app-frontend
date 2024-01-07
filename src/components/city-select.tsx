@@ -44,6 +44,7 @@ export function CitySelect({
             "w-full justify-between text-muted-foreground font-normal gap-3 group",
             className
           )}
+          data-test="city-select-btn"
         >
           <MapPin
             size="1rem"
@@ -62,7 +63,10 @@ export function CitySelect({
           <ChevronsUpDown size="1rem" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full p-0 max-h-60 overflow-auto">
+      <PopoverContent
+        className="w-full p-0 max-h-60 overflow-auto"
+        data-test="city-select-popover"
+      >
         <Command>
           <CommandInput placeholder="Wyszukaj miasto..." />
           <CommandEmpty>Nie znaleziono miast.</CommandEmpty>

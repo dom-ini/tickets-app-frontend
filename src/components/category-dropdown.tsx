@@ -62,13 +62,13 @@ export async function CategoryDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="group">
+        <Button variant="ghost" className="group" data-test="categories-btn">
           <Blocks className="me-2 w-5 h-5" />
           <span>Kategorie</span>
           <ChevronDown className="ms-2 relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent data-test="categories-dropdown">
         {categories.map((category) => (
           <CategoryDropdownItem category={category} key={category.id} />
         ))}

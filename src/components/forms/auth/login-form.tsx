@@ -81,6 +81,7 @@ export function LoginForm() {
                 <Input
                   placeholder="Adres e-mail"
                   autoComplete="email"
+                  data-test="email-input"
                   {...field}
                 />
               </FormControl>
@@ -98,6 +99,7 @@ export function LoginForm() {
                 <PasswordInput
                   placeholder="Hasło"
                   autoComplete="current-password"
+                  data-test="password-input"
                   {...field}
                 />
               </FormControl>
@@ -105,7 +107,11 @@ export function LoginForm() {
             </FormItem>
           )}
         />
-        {formError && <FormErrorMessage>{formError}</FormErrorMessage>}
+        {formError && (
+          <FormErrorMessage data-test="login-error">
+            {formError}
+          </FormErrorMessage>
+        )}
         <Button variant="link" asChild>
           <Link href="/nie-pamietam-hasla">Nie pamiętasz hasła?</Link>
         </Button>

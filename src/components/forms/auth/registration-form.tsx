@@ -74,6 +74,7 @@ export function RegistrationForm() {
   return (
     <Form {...form}>
       <form
+        data-test="registration-form"
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-3"
       >
@@ -85,6 +86,7 @@ export function RegistrationForm() {
               <FormLabel>Adres e-mail</FormLabel>
               <FormControl>
                 <Input
+                  data-test="email-input"
                   placeholder="Adres e-mail"
                   autoComplete="email"
                   {...field}
@@ -102,6 +104,7 @@ export function RegistrationForm() {
               <FormLabel>Hasło</FormLabel>
               <FormControl>
                 <PasswordInput
+                  data-test="password-input"
                   placeholder="Hasło"
                   autoComplete="new-password"
                   {...field}
@@ -119,6 +122,7 @@ export function RegistrationForm() {
               <FormLabel>Powtórz hasło</FormLabel>
               <FormControl>
                 <PasswordInput
+                  data-test="repeat-password-input"
                   placeholder="Powtórz hasło"
                   autoComplete="new-password"
                   {...field}
@@ -128,7 +132,11 @@ export function RegistrationForm() {
             </FormItem>
           )}
         />
-        {formError && <FormErrorMessage>{formError}</FormErrorMessage>}
+        {formError && (
+          <FormErrorMessage data-test="registration-error">
+            {formError}
+          </FormErrorMessage>
+        )}
         <Button type="submit" disabled={formLoading}>
           {formLoading ? (
             <Loader2 className="animate-spin" />

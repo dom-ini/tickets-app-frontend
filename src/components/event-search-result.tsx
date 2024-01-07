@@ -57,6 +57,7 @@ export function EventSearchResult({
             className={`flex flex-wrap justify-center sm:justify-start ${
               isViewGrid ? "gap-6" : "gap-4"
             }`}
+            data-test="search-results"
           >
             {events.map((event) => (
               <EventCard key={event.slug} event={event} />

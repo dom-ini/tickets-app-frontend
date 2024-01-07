@@ -50,6 +50,7 @@ export function TicketsTable() {
             <Link
               href={eventUrl}
               className="text-primary dark:text-secondary hover:underline"
+              data-test="tickets-event-url"
             >
               {name}
             </Link>
@@ -106,7 +107,12 @@ export function TicketsTable() {
             <>
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="ghost" size="icon" title="Wygeneruj kod QR">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    title="Wygeneruj kod QR"
+                    data-test="generate-qr-btn"
+                  >
                     <QrCode size="1.25rem" />
                   </Button>
                 </DialogTrigger>
@@ -118,7 +124,11 @@ export function TicketsTable() {
                       na wydarzenie.
                     </DialogDescription>
                   </DialogHeader>
-                  <div className="w-52 mx-auto" data-token={token}>
+                  <div
+                    className="w-52 mx-auto"
+                    data-token={token}
+                    data-test="qr-code"
+                  >
                     <TicketQr token={token} />
                   </div>
                   <Button onClick={downloadQr}>Zapisz kod QR</Button>
@@ -131,6 +141,7 @@ export function TicketsTable() {
                     size="icon"
                     title="Zrezygnuj z biletu"
                     className="text-destructive hover:text-destructive"
+                    data-test="cancel-ticket-btn"
                   >
                     <Ban size="1.25rem" />
                   </Button>
@@ -155,6 +166,7 @@ export function TicketsTable() {
                         type="button"
                         variant="destructive"
                         onClick={deleteTicket}
+                        data-test="cancel-ticket-confirm-btn"
                       >
                         Zrezygnuj z biletu
                       </Button>
