@@ -45,7 +45,7 @@ export default async function EventPage({ params }: EventPageProps) {
     <div className="container my-10">
       <Breadcrumbs elements={breadcrumbElements} className="mb-8" />
       <h1
-        className="font-semibold text-4xl md:text-5xl mb-4"
+        className="font-semibold text-3xl sm:text-4xl md:text-5xl mb-4"
         data-test="event-name"
       >
         {event.name}
@@ -56,7 +56,7 @@ export default async function EventPage({ params }: EventPageProps) {
           <Image
             loading="lazy"
             alt={event.name}
-            src={event.posterVertical || "/images/logo.svg"}
+            src={event.posterVertical || "/images/placeholder-event-vert.webp"}
             height="400"
             width="300"
             className="hidden md:block w-48 lg:w-72"
@@ -64,7 +64,7 @@ export default async function EventPage({ params }: EventPageProps) {
           <Image
             loading="lazy"
             alt={event.name}
-            src={event.posterHorizontal || "/images/logo.svg"}
+            src={event.posterHorizontal || "/images/placeholder-event-hor.webp"}
             height="300"
             width="400"
             className="block md:hidden w-full"

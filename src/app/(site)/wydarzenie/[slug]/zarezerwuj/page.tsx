@@ -40,7 +40,9 @@ export default async function ReserveTicketPage({
   return (
     <div className="container my-10">
       <Breadcrumbs elements={breadcrumbElements} className="mb-8" />
-      <h1 className="font-semibold text-4xl md:text-5xl mb-4">{event.name}</h1>
+      <h1 className="font-semibold text-3xl sm:text-4xl md:text-5xl mb-4">
+        {event.name}
+      </h1>
       <EventInfo event={event} />
       <TicketCategoriesPicker eventId={event.id} />
     </div>
