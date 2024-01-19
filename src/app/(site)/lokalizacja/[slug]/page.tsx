@@ -53,10 +53,14 @@ export default async function LocationPage({ params }: LocationPageProps) {
         longitude={location.longitude}
         className="mt-8 mb-12"
       />
-      <h3 className="text-3xl font-semibold">
-        {location.name} - najnowsze wydarzenia
-      </h3>
-      <EventsCarousel className="my-6" events={events.items} />
+      {events.totalCount > 1 && (
+        <>
+          <h3 className="text-3xl font-semibold">
+            {location.name} - najnowsze wydarzenia
+          </h3>
+          <EventsCarousel className="my-6" events={events.items} />
+        </>
+      )}
     </div>
   );
 }
