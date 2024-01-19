@@ -6,6 +6,7 @@ export default async function HomePage() {
   const events = await getEvents({
     pagination: { limit: "10" },
     filters: { isActive: true },
+    sorting: { sortBy: "-id" },
   });
 
   return (
