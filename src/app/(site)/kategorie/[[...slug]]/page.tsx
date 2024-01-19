@@ -100,7 +100,7 @@ export async function generateStaticParams() {
   return slugs;
 }
 
-const DEFAULT_PAGE_SIZE = 25;
+const DEFAULT_PAGE_SIZE = 24;
 
 export default async function CategoryPage({
   params,
