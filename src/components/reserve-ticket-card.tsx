@@ -28,8 +28,8 @@ export function ReserveTicketCard({
   const pathname = usePathname();
 
   return (
-    <div className="my-6 flex flex-wrap gap-6 sm:gap-0 justify-between items-center py-4 px-6 border">
-      <div className="flex flex-col items-center pe-5 sm:ps-4 sm:pe-8 border-r whitespace-nowrap">
+    <div className="my-6 flex flex-wrap gap-6 sm:gap-0 justify-center items-center py-4 px-6 border">
+      <div className="flex flex-col items-center pe-5 sm:ps-4 sm:pe-8 whitespace-nowrap">
         <span className="text-primary dark:text-secondary font-medium text-3xl">
           {format(heldAt, "dd")}
         </span>
