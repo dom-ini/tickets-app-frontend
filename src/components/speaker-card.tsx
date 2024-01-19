@@ -25,9 +25,9 @@ export function SpeakerCard({
           <Image
             alt={`${name} - zdjęcie`}
             src={speakerPhoto}
-            height={150}
-            width={150}
-            className="group-hover:scale-125 group-hover:brightness-75 duration-300 transition-all"
+            height="150"
+            width="150"
+            className="group-hover:scale-125 group-hover:brightness-75 duration-300 transition-all aspect-square object-cover"
           />
         </div>
         <h4 className="text-center mt-2 font-medium group-hover:text-primary dark:group-hover:text-secondary transition-all">
