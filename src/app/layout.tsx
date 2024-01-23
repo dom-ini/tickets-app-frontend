@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     default: "Tickts",
     template: "%s | Tickts",
   },
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_HOST || "http://localhost:3000"
+  ),
   description:
     "Rezerwuj bilety na najciekawsze wydarzenia. Wykłady, warsztaty, panele dyskusyjne i dużo więcej! Sprawdź dostępność biletów i dołącz do niezapomnianych wydarzeń",
   keywords: ["bilety", "wydarzenia", "rezerwacja", "warsztaty", "wykłady"],
