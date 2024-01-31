@@ -1,4 +1,4 @@
-import { useQRCode } from "next-qrcode";
+import { useQRCode } from 'next-qrcode';
 
 type TicketQrProps = {
   token: string;
@@ -6,11 +6,10 @@ type TicketQrProps = {
 
 export function TicketQr({ token }: TicketQrProps) {
   const { Image: QRImage } = useQRCode();
-  const ticketUrl = "localhost:3000/bilet/" + token;
 
   return (
     <QRImage
-      text={ticketUrl}
+      text={token}
       options={{
         margin: 3,
         width: 400,
