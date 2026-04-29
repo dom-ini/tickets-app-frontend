@@ -1,4 +1,4 @@
-import { useQRCode } from 'next-qrcode';
+import { useQRCode } from "next-qrcode";
 
 type TicketQrProps = {
   token: string;

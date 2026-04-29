@@ -20,14 +20,14 @@ export function LocationMap({
 }: LocationMapProps) {
   const mapCenter = useMemo(
     () => ({ lat: latitude, lng: longitude }),
-    [latitude, longitude],
+    [latitude, longitude]
   );
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY as string,
   });
   const handleMarkerClick = () => {
     window.open(
-      `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`,
+      `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
     );
   };
 
