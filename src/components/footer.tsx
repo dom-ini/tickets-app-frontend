@@ -1,4 +1,4 @@
-import { AtSign, Github, Linkedin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -29,18 +29,6 @@ export function Footer() {
                 title="Github"
               >
                 <Github />
-              </a>
-            </Button>
-          </li>
-          <li>
-            <Button asChild variant="ghost">
-              <a
-                href="mailto:dominik.szlaza.1@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Wyślij e-mail"
-              >
-                <AtSign />
               </a>
             </Button>
           </li>

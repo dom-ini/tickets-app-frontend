@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { DemoModeBanner } from "@/components/demo-mode-banner";
 
 export const metadata: Metadata = {
   title: "Logowanie",
@@ -20,9 +21,10 @@ export default function LoginPage() {
       <CardHeader className="text-center space-y-2">
         <CardTitle>Zaloguj się</CardTitle>
         <CardDescription>
-          Witaj ponownie! Wprowadź swój adres e-mail i hasło, żeby się
+          Witaj ponownie! Wprowadź swój adres e-mail i&nbsp;hasło, żeby się
           zalogować.
         </CardDescription>
+        <DemoModeBanner className="mb-4" />
       </CardHeader>
       <CardContent>
         <LoginForm />
