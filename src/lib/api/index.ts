@@ -4,15 +4,10 @@ import { FetchError } from "@/lib/api/errors";
 import { AUTH_COOKIE_KEY } from "@/lib/constants";
 
 export async function fetchData(url: string, fetchOptions?: RequestInit) {
-  const options: RequestInit = {
-    ...fetchOptions,
-    headers: {
-      ...fetchOptions?.headers,
-      "Access-Control-Allow-Origin":
-        process.env.NEXT_PUBLIC_ALLOWED_ORIGIN || "",
-    },
-  };
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, options);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}${url}`,
+    fetchOptions
+  );
   if (!res.ok) throw new FetchError(res.statusText, res.status);
   return res.json();
 }
@@ -27,8 +22,6 @@ export async function fetchDataWithAuthorization(
     headers: {
       ...fetchOptions?.headers,
       Authorization: `Bearer ${authCookie}`,
-      "Access-Control-Allow-Origin":
-        process.env.NEXT_PUBLIC_ALLOWED_ORIGIN || "",
     },
   };
 
