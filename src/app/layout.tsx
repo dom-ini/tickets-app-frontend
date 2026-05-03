@@ -5,6 +5,7 @@ import { Lexend_Deca } from "next/font/google";
 import React from "react";
 
 import { NavigationMobile } from "@/components/navigation-mobile";
+import { ServerBootToast } from "@/components/server-boot-toast";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
@@ -50,6 +51,7 @@ export default function RootLayout({
           {children}
           <Toaster />
           <NavigationMobile />
+          <ServerBootToast />
         </Providers>
         <ScrollToTop />
       </body>
