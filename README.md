@@ -12,7 +12,7 @@ Administrators can add content (events, ticket categories, speakers etc.) throug
 
 ### Project website
 
-https://tickets-app-frontend.vercel.app/
+https://tickts.dominikszlaza.pl/
 
 ### Back-end repository
 
